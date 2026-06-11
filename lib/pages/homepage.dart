@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'UserListPage.dart';
 
 class HomePage extends StatelessWidget {
   final String username;
@@ -58,11 +59,12 @@ class HomePage extends StatelessWidget {
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment:
+                              CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Selamat Datang",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 16,
                               ),
@@ -97,11 +99,32 @@ class HomePage extends StatelessWidget {
 
                 GridView.count(
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+                  physics:
+                      const NeverScrollableScrollPhysics(),
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
                   children: [
+
+                    // DAFTAR USER
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const UserListPage(),
+                          ),
+                        );
+                      },
+                      child: menuCard(
+                        icon: Icons.people,
+                        title: "Daftar User",
+                        color: Colors.blue,
+                      ),
+                    ),
+
+                    // LOGOUT
                     GestureDetector(
                       onTap: () {
                         showDialog(
@@ -123,13 +146,17 @@ class HomePage extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.popUntil(
                                       context,
-                                      (route) => route.isFirst,
+                                      (route) =>
+                                          route.isFirst,
                                     );
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.red,
+                                  style:
+                                      ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors.red,
                                   ),
-                                  child: const Text("Logout"),
+                                  child:
+                                      const Text("Logout"),
                                 ),
                               ],
                             );
@@ -170,7 +197,8 @@ class HomePage extends StatelessWidget {
         ],
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment:
+            MainAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.all(15),
